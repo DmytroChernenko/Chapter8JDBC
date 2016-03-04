@@ -28,5 +28,14 @@ public class JdbcContactDaoSample {
             }
             System.out.println();
         }
+
+
+        List<Contact> contactsWithDetail = contactDao.findAllWithDetail(); for (Contact contact: contactsWithDetail) {
+            System.out.println(contact);
+            if (contact.getContactTelDetails() != null) {
+                for (ContactTelDetail contactTelDetail: contact.getContactTelDetails()) {
+                    System.out.println("---" + contactTelDetail); }
+            }
+            System.out.println(); }
     }
 }

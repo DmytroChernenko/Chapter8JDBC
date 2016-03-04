@@ -18,4 +18,6 @@ public interface ContactDao {
     public String findFirstNameById(long id);
 
     public String findLastNameById(long id);
+
+    public List<Contact> findAllWithDetail();
 }
