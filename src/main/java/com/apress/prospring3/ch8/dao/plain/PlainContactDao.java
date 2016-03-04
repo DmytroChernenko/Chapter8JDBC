@@ -62,6 +62,14 @@ public class PlainContactDao implements ContactDao {
         return null;
     }
 
+    public String findFirstNameById(Long id) {
+        return null;
+    }
+
+    public String findLastNameById(Long id) {
+        return null;
+    }
+
     public void insert(Contact contact) {
         Connection connection = null;
         try {

@@ -51,6 +51,20 @@ public class JdbcContactDao implements ContactDao {
         return null;
     }
 
+    public String findFirstNameById(Long id) {
+        String firstName = jdbcTemplate.queryForObject(
+                "select first_name from contact where id = ?",
+                new Object[]{id}, String.class);
+        return firstName;
+    }
+
+    public String findLastNameById(Long id) {
+        String sql = "select last_name from contact where id = :contactId";
+        SqlParameterSource namedParameters =
+                new MapSqlParameterSource("contactId", id);
+        return namedParameterJdbcTemplate.queryForObject(sql, namedParameters, String.class);
+    }
+
     public void insert(Contact contact) {
 
     }
@@ -61,20 +75,6 @@ public class JdbcContactDao implements ContactDao {
 
     public void delete(Long contactId) {
 
-    }
-
-    public String findFirstNameById(long id) {
-        String firstName = jdbcTemplate.queryForObject(
-                "select first_name from contact where id = ?",
-                new Object[]{id}, String.class);
-        return firstName;
-    }
-
-    public String findLastNameById(long id) {
-        String sql = "select last_name from contact where id = :contactId";
-        SqlParameterSource namedParameters =
-                new MapSqlParameterSource("contactId", id);
-        return namedParameterJdbcTemplate.queryForObject(sql, namedParameters, String.class);
     }
 
 
