@@ -15,5 +15,7 @@ public interface ContactDao {
 
     public void delete(Long contactId);
 
-    String findFirstNameById(long id);
+    public String findFirstNameById(long id);
+
+    public String findLastNameById(long id);
 }
