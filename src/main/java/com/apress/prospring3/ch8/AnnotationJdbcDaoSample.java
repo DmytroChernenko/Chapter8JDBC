@@ -13,7 +13,7 @@ public class AnnotationJdbcDaoSample {
         ctx.load("classpath:app-context-annotation.xml");
         ctx.refresh();
         ContactDao contactDao = ctx.getBean("contactDao", ContactDao.class);
-// Найти и вывести список всех контактов.
+
         List<Contact> contacts = contactDao.findAll();
         listContacts(contacts);
 
