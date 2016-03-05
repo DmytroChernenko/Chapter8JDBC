@@ -108,14 +108,6 @@ public class PlainContactDao implements ContactDao {
         }
     }
 
-    public String findFirstNameById(long id) {
-        return null;
-    }
-
-    public String findLastNameById(long id) {
-        return null;
-    }
-
     public List<Contact> findAllWithDetail() {
         return null;
     }
