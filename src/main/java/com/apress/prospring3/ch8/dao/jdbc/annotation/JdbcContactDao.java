@@ -17,15 +17,18 @@ import java.util.Map;
 public class JdbcContactDao implements ContactDao {
 
     private Log log = LogFactory.getLog(JdbcContactDao.class);
+
     private DataSource dataSource;
     private SelectAllContacts selectAllContacts;
     private SelectContactByFirstName selectContactByFirstName;
+    private UpdateContact updateContact;
 
     @Resource(name = "dataSource")
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
         selectAllContacts = new SelectAllContacts(dataSource);
         selectContactByFirstName = new SelectContactByFirstName(dataSource);
+        updateContact = new UpdateContact(dataSource);
     }
 
     public DataSource getDataSource() {
@@ -59,7 +62,13 @@ public class JdbcContactDao implements ContactDao {
     }
 
     public void update(Contact contact) {
-
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("first_name", contact.getFirstName());
+        paramMap.put("last_name", contact.getLastName());
+        paramMap.put("birth_date", contact.getBirthDate());
+        paramMap.put("id", contact.getId());
+        updateContact.updateByNamedParam(paramMap);
+        log.info("Existing contact updated with id: " + contact.getId());
     }
 
     public void delete(Long contactId) {
