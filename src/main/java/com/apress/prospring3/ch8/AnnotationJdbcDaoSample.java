@@ -16,6 +16,10 @@ public class AnnotationJdbcDaoSample {
 // Найти и вывести список всех контактов.
         List<Contact> contacts = contactDao.findAll();
         listContacts(contacts);
+
+        contacts = contactDao.findByFirstName("Clarence");
+        listContacts(contacts);
+
     }
 
     private static void listContacts(List<Contact> contacts) {

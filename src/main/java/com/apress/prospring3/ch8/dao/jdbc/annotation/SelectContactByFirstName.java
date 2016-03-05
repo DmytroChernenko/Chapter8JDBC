@@ -15,7 +15,7 @@ import java.sql.Types;
 public class SelectContactByFirstName extends MappingSqlQuery<Contact> {
 
     private static final String SQL_FIND_BY_FIRST_NAME = "select id, first_name, last_name," +
-            " birth_date from contact" +
+            " birth_date from contact " +
             "where first_name = :first_name";
 
 
